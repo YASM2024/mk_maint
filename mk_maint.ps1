@@ -3,11 +3,18 @@
 #### 対象フォルダ直下に日付とフォルダ、さらにその下にbkフォルダを作成する。
 #### コマンドラインで使用する。
 #### 例）mk_maint $projectName
+#### show オプションで、すべての候補をコンソールに表示する。
+#### 例）mk_maint -show
 ####
 ############################################################################
 
 
 function mk_maint() {
+
+    param (
+        [switch]$show
+    )
+    
     $project = $args[0]
     try{
 
@@ -21,6 +28,14 @@ function mk_maint() {
             $path_dict[$_.Name] = $_.Value
         }
 
+
+        # -showオプションの場合には、すべてを表示。
+        if ($show){
+            Write-Host "設定済み案件は以下のとおりです。"
+            $path_dict.Keys | ForEach-Object { Write-Output $_ }
+            return
+        }
+        
         if ($path_dict.ContainsKey($project)) {
 
             $path = $path_dict[$project]
