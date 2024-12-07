@@ -9,9 +9,7 @@
 #### 2-1 設定ファイルのパスを設定
 <div class="snippet-clipboard-content notranslate overflow-auto">
 <pre class="notranslate"><code># mk_maint.ps1 21行目付近
-OUTPUT_DIR = r'C:\path\to\pathlist.json'
-</code></pre>
-<br>
+$pathListPath = "C:\path\to\pathlist.json"
 </code></pre>
 
 #### 2-2 フォルダの出力先を設定（日本語を含む場合、文字コードは shift-jisとします）  
