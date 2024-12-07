@@ -6,7 +6,7 @@
 
 ## 2. 使用方法
 
-#### 設定ファイルのパスを設定
+#### 2-1 設定ファイルのパスを設定
 <div class="snippet-clipboard-content notranslate overflow-auto">
 <pre class="notranslate"><code># mk_maint.ps1 21行目付近
 OUTPUT_DIR = r'C:\path\to\pathlist.json'
@@ -14,7 +14,7 @@ OUTPUT_DIR = r'C:\path\to\pathlist.json'
 <br>
 </code></pre>
 
-#### フォルダの出力先を設定（日本語を含む場合、文字コードは shift-jisとします）  
+#### 2-2 フォルダの出力先を設定（日本語を含む場合、文字コードは shift-jisとします）  
 下記の例は、「prj1」のフォルダが「C:\path\to\folder1」に、「prj2」のフォルダが「C:\path\to\folder2」に対応しています。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
 <pre class="notranslate"><code># pathlist.json<br>
@@ -25,9 +25,9 @@ OUTPUT_DIR = r'C:\path\to\pathlist.json'
 }
 </code></pre>  
 
-#### powershellコマンドに登録
+#### 2-3 powershellコマンドに登録
 
-#### powershellで実行
+#### 2-4 powershellで実行
 以下を叩くと、上記で設定したフォルダに、日付名（YYYYMMDD）のフォルダを自動生成します。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
 <pre class="notranslate"><code>mk_maint prj1</code></pre>  
