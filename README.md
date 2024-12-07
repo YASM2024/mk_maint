@@ -6,13 +6,13 @@
 
 ## 2. 使用方法
 
-#### 2-1 設定ファイルのパスを設定
+#### 2-1 設定ファイル（pathlist.json）のパスを設定
 <div class="snippet-clipboard-content notranslate overflow-auto">
 <pre class="notranslate"><code># mk_maint.ps1 21行目付近
 $pathListPath = "C:\path\to\pathlist.json"
 </code></pre>
 
-#### 2-2 フォルダの出力先を設定（日本語を含む場合、文字コードは shift-jisとします）  
+#### 2-2 設定ファイル（pathlist.json）に、フォルダの出力先を設定（日本語を含む場合、文字コードは shift-jisとします）  
 下記の例は、「prj1」のフォルダが「C:\path\to\folder1」に、「prj2」のフォルダが「C:\path\to\folder2」に対応しています。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
 <pre class="notranslate"><code># pathlist.json<br>
