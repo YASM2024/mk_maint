@@ -9,7 +9,7 @@
 OUTPUT_DIR = r'C:\path\to\pathlist.json'
 </code></pre>
 <br>
-</code></pre> 
+</code></pre>  
 #### フォルダの出力先を設定（日本語を含む場合、文字コードは shift-jisとします）  
 下記の例は、「prj1」のフォルダが「C:\path\to\folder1」に、「prj2」のフォルダが「C:\path\to\folder2」に対応しています。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
@@ -19,6 +19,6 @@ OUTPUT_DIR = r'C:\path\to\pathlist.json'
     "prj2":"G:\\path\\to\\folder2",<br>
     ...<br>
 }
-</code></pre>
+</code></pre>  
 #### その他  
 powershellコマンドに登録しておくと、日常業務をスマートに処理できるでしょう。Good Luck !
