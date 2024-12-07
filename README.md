@@ -25,5 +25,9 @@ OUTPUT_DIR = r'C:\path\to\pathlist.json'
 }
 </code></pre>  
 
-#### その他  
-powershellコマンドに登録しておくと、日常業務をスマートに処理できるでしょう。Good Luck !
+#### powershellコマンドに登録
+
+#### powershellで実行
+以下を叩くと、上記で設定したフォルダに、日付名（YYYYMMDD）のフォルダを自動生成します。  
+<div class="snippet-clipboard-content notranslate overflow-auto">
+<pre class="notranslate"><code>mk_maint prj1</code></pre>  
