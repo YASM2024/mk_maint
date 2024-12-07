@@ -1,7 +1,7 @@
 # mk_maint.ps1  
 ## 1. 概要
    このプログラムは、あらかじめ設定したフォルダに、日付名（YYYYMMDD）のフォルダを自動生成します。  
-
+   （その直下に、「bk」というフォルダも自動的に生成します。）  
 ## 2. 使用方法
 #### 設定ファイルのパスを設定
 <div class="snippet-clipboard-content notranslate overflow-auto">
@@ -10,7 +10,6 @@ OUTPUT_DIR = r'C:\path\to\pathlist.json'
 </code></pre>
 <br>
 </code></pre> 
-
 #### フォルダの出力先を設定（日本語を含む場合、文字コードは shift-jisとします）  
 下記の例は、「prj1」のフォルダが「C:\path\to\folder1」に、「prj2」のフォルダが「C:\path\to\folder2」に対応しています。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
@@ -21,3 +20,5 @@ OUTPUT_DIR = r'C:\path\to\pathlist.json'
     ...<br>
 }
 </code></pre>
+#### その他  
+powershellコマンドに登録しておくと、日常業務をスマートに処理できるでしょう。Good Luck !
