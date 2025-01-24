@@ -12,7 +12,10 @@
 function mk_maint() {
 
     param (
-        [switch]$show
+        # オプションを用意
+        [switch]$show, 
+        [switch]$showdir, 
+        [switch]$showSetting
     )
     
     $project = $args[0]
@@ -29,10 +32,20 @@ function mk_maint() {
         }
 
 
-        # -showオプションの場合には、すべてを表示。
+        # -オプション選択時
         if ($show){
+            # -showオプションの場合には、すべてを表示。
             Write-Host "設定済み案件は以下のとおりです。"
             $path_dict.Keys | ForEach-Object { Write-Output $_ }
+            return
+        } elseif ($showdir){
+            # -showdirオプションの場合には、ターゲットフォルダをすべてを表示。
+            Write-Host "設定済み案件のターゲットフォルダは以下のとおりです。"
+            $path_dict.Values | ForEach-Object { Write-Output $_ }
+            return
+        } elseif ($showSetting){
+            # -showSetting オプションの場合には、設定ファイルを開く。
+            Invoke-Item $pathListPath
             return
         }
         
