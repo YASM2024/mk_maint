@@ -22,6 +22,42 @@ function mk_maint() {
         [switch]$showSetting
     )
 
+    function Get-NewDir {
+        param (
+            [string]$path
+        )
+
+        $formatted_date = (Get-Date).ToString("yyyyMMdd")
+        $newdir = Join-Path -Path $path -ChildPath $formatted_date
+
+        if (Test-Path $newdir) {
+            $i = 2
+            while (Test-Path $newdir) {
+                $newdir = Join-Path -Path $path -ChildPath "${formatted_date}_${i}"
+                $i++
+            }
+        }
+
+        return $newdir
+    }
+    function Make-Prj-Folder {
+        param (
+            [string]$path
+        )
+
+        if(-not(Test-Path $path)){ echo "所定フォルダが見つからないため、プログラムを終了します。"; exit }
+        
+        # 生成するディレクトリを検索し、作成する
+        $newdir = Get-NewDir -path $path
+        mkdir $newdir
+        # ｂｋフォルダを作成する
+        $bkdir = Join-Path -Path $newdir -ChildPath "bk"
+        mkdir $bkdir
+
+        Write-Host "フォルダを作成しました。"
+        Invoke-Item $newdir
+        return
+    }
 
     $scriptPath = Split-Path (Get-Module -ListAvailable mk_maint).Path -Parent
     $project = $args[0]
@@ -57,34 +93,21 @@ function mk_maint() {
         }
 
         # オプションがない場合には、フォルダ作成に進む。
-        $formatted_date = (Get-Date).ToString("yyyyMMdd")
-        
         if ($path_dict.ContainsKey($project)) {
 
             $path = $path_dict[$project]
-
-            # $newdir = "${path}\${formatted_date}"
-            $newdir = Join-Path -Path $path -ChildPath $formatted_date
-
             if(-not(Test-Path $path)){ echo "所定フォルダが見つからないため、プログラムを終了します。"; exit }
-
-            if (Test-Path $newdir) {
-
-                $i = 2
-                while (Test-Path $newdir) {
-                    # $newdir = "${path}\${formatted_date}_${i}"
-                    $newdir = Join-Path -Path $path -ChildPath "${formatted_date}_${i}"
-                    $i++
-                }
-            }
-
+            
+            # 生成するディレクトリを検索し、作成する
+            $newdir = Get-NewDir -path $path
             mkdir $newdir
-
-            # mkdir "${newdir}\bk"
+            # ｂｋフォルダを作成する
             $bkdir = Join-Path -Path $newdir -ChildPath "bk"
             mkdir $bkdir
 
+            Write-Host "フォルダを作成しました。"
             Invoke-Item $newdir
+            return
 
         } else {
 
@@ -98,29 +121,18 @@ function mk_maint() {
                 1 {
                     $project = $matching_keys
                     $path = $path_dict[$project]
-
-                    # $newdir = "${path}\${formatted_date}"
-                    $newdir = Join-Path -Path $path -ChildPath $formatted_date
-
                     if(-not(Test-Path $path)){ echo "所定フォルダが見つからないため、プログラムを終了します。"; exit }
 
-                    if (Test-Path $newdir) {
-    
-                        $i = 2
-                        while (Test-Path $newdir) {
-                            # $newdir = "${path}\${formatted_date}_${i}"
-                            $newdir = Join-Path -Path $path -ChildPath "${formatted_date}_${i}"
-                            $i++
-                        }
-                    }
-
+                    # 生成するディレクトリを検索し、作成する。
+                    $newdir = Get-NewDir -path $path
                     mkdir $newdir
-
-                    # mkdir "${newdir}\bk"
+                    # ｂｋフォルダを作成する
                     $bkdir = Join-Path -Path $newdir -ChildPath "bk"
                     mkdir $bkdir
 
+                    Write-Host "フォルダを作成しました。"
                     Invoke-Item $newdir
+                    return
                 }
                 default {
                     Write-Host "複数の一致するキーが見つかりました："
