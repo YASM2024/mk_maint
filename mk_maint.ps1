@@ -52,12 +52,14 @@ function mk_maint() {
             Invoke-Item $pathListPath
             return
         }
+
+        # オプションがない場合には、フォルダ作成に進む。
+        $formatted_date = (Get-Date).ToString("yyyyMMdd")
         
         if ($path_dict.ContainsKey($project)) {
 
             $path = $path_dict[$project]
 
-            $formatted_date = (Get-Date).ToString("yyyyMMdd")
             $newdir = "${path}\${formatted_date}"
 
             if(-not(Test-Path $path)){ echo "所定フォルダが見つからないため、プログラムを終了します。"; exit }
@@ -90,7 +92,6 @@ function mk_maint() {
                     $project = $matching_keys
                     $path = $path_dict[$project]
 
-                    $formatted_date = (Get-Date).ToString("yyyyMMdd")
                     $newdir = "${path}\${formatted_date}"
 
                     if(-not(Test-Path $path)){ echo "所定フォルダが見つからないため、プログラムを終了します。"; exit }
