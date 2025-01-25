@@ -29,12 +29,20 @@
 
 「-show」オプションを選択すると、設定されたプロジェクト名の一覧を表示します。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
-<pre class="notranslate"><code> > mk_maint -show</code></pre>  
+<pre class="notranslate"><code> > mk_maint -show<br>
+設定済み案件は以下のとおりです。<br>
+prj1<br>
+prj2<br>
+</code></pre>  
 
 「-showDir」オプションを選択すると、設定されたプロジェクトのフォルダパス一覧を表示します。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
-<pre class="notranslate"><code> > mk_maint -showDir</code></pre>  
+<pre class="notranslate"><code> > mk_maint -showDir<br>
+設定済み案件のターゲットフォルダは以下のとおりです。<br>
+C:\path\to\folder1<br>
+G:\path\to\folder2<br>
+</code></pre>  
 
 「-showSetting」オプションを選択すると、設定ファイルを表示します。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
-<pre class="notranslate"><code> > mk_maint -showSetting prj1</code></pre>  
+<pre class="notranslate"><code> > mk_maint -showSetting</code></pre>  
