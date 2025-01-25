@@ -21,11 +21,14 @@ function mk_maint() {
         [switch]$showdir, 
         [switch]$showSetting
     )
-    
+
+
+    $scriptPath = Split-Path (Get-Module -ListAvailable mk_maint).Path -Parent
     $project = $args[0]
+
     try{
 
-        $pathListPath = "C:\path\to\pathlist.json" # 設定ファイル（リスト）
+        $pathListPath = "${scriptPath}\pathlist.json" # 設定ファイル（リスト）
         if(-not(Test-Path $pathListPath)){ echo "設定ファイルが見つからないため、プログラムを終了します。"; exit }
         
         # $path_dictに設定ファイルを取得
@@ -60,22 +63,26 @@ function mk_maint() {
 
             $path = $path_dict[$project]
 
-            $newdir = "${path}\${formatted_date}"
+            # $newdir = "${path}\${formatted_date}"
+            $newdir = Join-Path -Path $path -ChildPath $formatted_date
 
             if(-not(Test-Path $path)){ echo "所定フォルダが見つからないため、プログラムを終了します。"; exit }
 
             if (Test-Path $newdir) {
-    
+
                 $i = 2
                 while (Test-Path $newdir) {
-                    $newdir = "${path}\${formatted_date}_${i}"
+                    # $newdir = "${path}\${formatted_date}_${i}"
+                    $newdir = Join-Path -Path $path -ChildPath "${formatted_date}_${i}"
                     $i++
                 }
             }
 
             mkdir $newdir
 
-            mkdir "${newdir}\bk"
+            # mkdir "${newdir}\bk"
+            $bkdir = Join-Path -Path $newdir -ChildPath "bk"
+            mkdir $bkdir
 
             Invoke-Item $newdir
 
@@ -92,7 +99,8 @@ function mk_maint() {
                     $project = $matching_keys
                     $path = $path_dict[$project]
 
-                    $newdir = "${path}\${formatted_date}"
+                    # $newdir = "${path}\${formatted_date}"
+                    $newdir = Join-Path -Path $path -ChildPath $formatted_date
 
                     if(-not(Test-Path $path)){ echo "所定フォルダが見つからないため、プログラムを終了します。"; exit }
 
@@ -100,14 +108,17 @@ function mk_maint() {
     
                         $i = 2
                         while (Test-Path $newdir) {
-                            $newdir = "${path}\${formatted_date}_${i}"
+                            # $newdir = "${path}\${formatted_date}_${i}"
+                            $newdir = Join-Path -Path $path -ChildPath "${formatted_date}_${i}"
                             $i++
                         }
                     }
 
                     mkdir $newdir
 
-                    mkdir "${newdir}\bk"
+                    # mkdir "${newdir}\bk"
+                    $bkdir = Join-Path -Path $newdir -ChildPath "bk"
+                    mkdir $bkdir
 
                     Invoke-Item $newdir
                 }
