@@ -25,16 +25,16 @@
 #### 2-3 powershellで実行
 以下を叩くと、上記で設定したフォルダに、日付名（YYYYMMDD）のフォルダを自動生成します。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
-<pre class="notranslate"><code>mk_maint prj1</code></pre>  
+<pre class="notranslate"><code> > mk_maint prj1</code></pre>  
 
 「-show」オプションを選択すると、設定されたプロジェクト名の一覧を表示します。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
-<pre class="notranslate"><code>mk_maint -show</code></pre>  
+<pre class="notranslate"><code> > mk_maint -show</code></pre>  
 
 「-showDir」オプションを選択すると、設定されたプロジェクトのフォルダパス一覧を表示します。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
-<pre class="notranslate"><code>mk_maint -showDir</code></pre>  
+<pre class="notranslate"><code> > mk_maint -showDir</code></pre>  
 
 「-showSetting」オプションを選択すると、設定ファイルを表示します。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
-<pre class="notranslate"><code>mk_maint -showSetting prj1</code></pre>  
+<pre class="notranslate"><code> > mk_maint -showSetting prj1</code></pre>  
