@@ -40,24 +40,6 @@ function mk_maint() {
 
         return $newdir
     }
-    function Make-Prj-Folder {
-        param (
-            [string]$path
-        )
-
-        if(-not(Test-Path $path)){ echo "所定フォルダが見つからないため、プログラムを終了します。"; exit }
-        
-        # 生成するディレクトリを検索し、作成する
-        $newdir = Get-NewDir -path $path
-        mkdir $newdir
-        # ｂｋフォルダを作成する
-        $bkdir = Join-Path -Path $newdir -ChildPath "bk"
-        mkdir $bkdir
-
-        Write-Host "フォルダを作成しました。"
-        Invoke-Item $newdir
-        return
-    }
 
     $scriptPath = Split-Path (Get-Module -ListAvailable mk_maint).Path -Parent
     $project = $args[0]
