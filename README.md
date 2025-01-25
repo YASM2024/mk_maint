@@ -1,4 +1,4 @@
-# mk_maint.ps1  
+# mk_maint  
 
 ## 1. 概要
    このプログラムは、あらかじめ設定したフォルダに、日付名（YYYYMMDD）のフォルダを自動生成します。  
@@ -6,13 +6,12 @@
 
 ## 2. 使用方法
 
-#### 2-1 設定ファイル（pathlist.json）のパスを設定
-<div class="snippet-clipboard-content notranslate overflow-auto">
-<pre class="notranslate"><code># mk_maint.ps1 21行目付近
-$pathListPath = "C:\path\to\pathlist.json"
-</code></pre>
+#### 2-1 powershellコマンドに登録  
+文字コードは shift-jisとしてください。
 
-#### 2-2 設定ファイル（pathlist.json）に、フォルダの出力先を設定（日本語を含む場合、文字コードは shift-jisとします）  
+#### 2-2 設定ファイル（pathlist.json：プロジェクトフォルダの出力先）を設定  
+「pathlist_template.json」をコピーして「pathlist.json」とし、設定を記述してください。  
+日本語を含む場合、文字コードは shift-jisとしてください。  
 下記の例は、「prj1」のフォルダが「C:\path\to\folder1」に、「prj2」のフォルダが「C:\path\to\folder2」に対応しています。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
 <pre class="notranslate"><code># pathlist.json<br>
@@ -23,9 +22,7 @@ $pathListPath = "C:\path\to\pathlist.json"
 }
 </code></pre>  
 
-#### 2-3 powershellコマンドに登録
-
-#### 2-4 powershellで実行
+#### 2-3 powershellで実行
 以下を叩くと、上記で設定したフォルダに、日付名（YYYYMMDD）のフォルダを自動生成します。  
 <div class="snippet-clipboard-content notranslate overflow-auto">
 <pre class="notranslate"><code>mk_maint prj1</code></pre>  
